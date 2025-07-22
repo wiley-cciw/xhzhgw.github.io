@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业社交媒体运营服务 | 覆盖港台新马</title>
+    <title>专业社交媒体运营服务 | 港台新马市场</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -28,6 +28,7 @@
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
         
         .container {
@@ -132,6 +133,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
         }
         
         .cta-button:hover {
@@ -413,6 +416,164 @@
             font-size: 0.9rem;
         }
         
+        /* Contact Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .contact-modal {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.5s ease;
+        }
+        
+        .modal-overlay.active .contact-modal {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--xiaohongshu);
+        }
+        
+        .contact-modal h3 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .contact-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .contact-info p {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--xiaohongshu);
+            text-decoration: underline;
+        }
+        
+        .whatsapp .contact-icon {
+            background: #25D366;
+        }
+        
+        .wechat .contact-icon {
+            background: #09B83E;
+        }
+        
+        .phone .contact-icon {
+            background: var(--xiaohongshu);
+        }
+        
+        .email .contact-icon {
+            background: #EA4335;
+        }
+        
+        /* Floating Contact Button */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-contact:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--xiaohongshu);
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -453,6 +614,20 @@
             .cta-content h2 {
                 font-size: 2.2rem;
             }
+            
+            .contact-modal {
+                padding: 30px 20px;
+            }
+            
+            .contact-method {
+                padding: 15px;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                margin-right: 15px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -471,6 +646,10 @@
             .cta-button {
                 padding: 12px 30px;
             }
+            
+            .contact-modal {
+                width: 95%;
+            }
         }
     </style>
 </head>
@@ -487,7 +666,7 @@
                     <li><a href="#services">服务内容</a></li>
                     <li><a href="#regions">服务地区</a></li>
                     <li><a href="#results">服务成果</a></li>
-                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#" class="contact-trigger">联系我们</a></li>
                 </ul>
             </nav>
         </div>
@@ -498,7 +677,7 @@
         <div class="hero-content">
             <h1>专业社交媒体运营服务</h1>
             <p>让您的小红书、Instagram和Facebook账号在港台新马市场脱颖而出</p>
-            <a href="#contact" class="cta-button">获取免费咨询 <i class="fas fa-arrow-right"></i></a>
+            <button class="cta-button contact-trigger">获取免费咨询 <i class="fas fa-arrow-right"></i></button>
         </div>
     </section>
 
@@ -653,11 +832,11 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section">
         <div class="cta-content">
             <h2>准备好提升您的社交媒体影响力了吗？</h2>
             <p>我们的专家团队将为您提供免费咨询，制定专属的社交媒体营销策略</p>
-            <a href="#" class="cta-button">立即预约咨询 <i class="fas fa-calendar-check"></i></a>
+            <button class="cta-button contact-trigger">立即预约咨询 <i class="fas fa-calendar-check"></i></button>
         </div>
     </section>
 
@@ -699,6 +878,7 @@
                         <li><i class="fab fa-weixin"></i> w5172231</li>
                         <li><i class="fas fa-map-marker-alt"></i> 厦门市思明区</li>
                     </ul>
+                    <button class="cta-button contact-trigger" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">立即咨询</button>
                 </div>
             </div>
             
@@ -708,7 +888,97 @@
         </div>
     </footer>
 
+    <!-- Floating Contact Button -->
+    <div class="floating-contact contact-trigger">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="contact-modal">
+            <span class="close-modal">&times;</span>
+            <h3>联系我们</h3>
+            <div class="contact-methods">
+                <div class="contact-method whatsapp">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/86 13459256931">+86 13459256931</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-method wechat">
+                    <div class="contact-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h4>微信</h4>
+                        <p>扫码添加或搜索: <strong>w5172231</strong></p>
+                    </div>
+                </div>
+                
+                <div class="contact-method phone">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h4>电话咨询</h4>
+                        <p><a href="tel:+86 13235923761">+86 13235923761</a> (中国)</p>
+                        <p><a href="tel:+86 13295924530">+86 13295924530</a> (中国)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method email">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h4>电子邮件</h4>
+                        <p><a href="mailto:a827612513@gmail.com">a827612513@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // 联系弹窗功能
+        const contactTriggers = document.querySelectorAll('.contact-trigger');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // 打开弹窗
+        contactTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+        });
+        
+        // 关闭弹窗
+        closeModal.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // 点击模态框外部关闭
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // 按ESC键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                contactModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -716,28 +986,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
-        });
-        
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe sections
-            document.querySelectorAll('.card, .region-card, .stat').forEach(el => {
-                observer.observe(el);
             });
         });
     </script>
